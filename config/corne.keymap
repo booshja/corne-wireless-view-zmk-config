@@ -59,6 +59,20 @@
             >;
         };
 
-        extra_1 { status = "reserved"; };
+        board_system {
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
+            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+            //                    | GUI |     | SPC |   | ENT |     | ALT |
+
+            display-name = "Brd+Sys";
+            bindings = <
+&kp AT_SIGN        &kp EXCLAMATION  &kp GRAVE    &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp AMPERSAND    &kp MINUS      &kp N7        &kp NUMBER_8  &kp NUMBER_9  &kp SLASH     &trans
+&kp TILDE          &kp ASTERISK     &kp DOLLAR   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp EQUAL        &kp PLUS       &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp ASTERISK  &kp BACKSPACE
+&kp LC(LG(SPACE))  &kp QUESTION     &kp PERCENT  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp ASTERISK     &kp PERIOD     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL     &kp RETURN
+                                                 &kp LGUI              &kp RETURN             &kp SPACE        &kp BACKSPACE  &kp SPACE     &kp NUMBER_0
+            >;
+        };
     };
 };
