@@ -24,6 +24,59 @@
         };
     };
 
+    behaviors {
+        HMR: HMR {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            flavor = "tap-preferred";
+            hold-trigger-on-release;
+        };
+
+        hmr_quick: hmr_quick {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR_QUICK";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <175>;
+            flavor = "tap-preferred";
+            hold-trigger-on-release;
+        };
+
+        left_paren_angle: left_paren_angle {
+            compatible = "zmk,behavior-tap-dance";
+            label = "LEFT_PAREN_ANGLE";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_PARENTHESIS>, <&kp LESS_THAN>;
+        };
+
+        right_paren_angle: right_paren_angle {
+            compatible = "zmk,behavior-tap-dance";
+            label = "RIGHT_PAREN_ANGLE";
+            #binding-cells = <0>;
+            bindings = <&kp RIGHT_PARENTHESIS>, <&kp GREATER_THAN>;
+        };
+
+        period_bang: period_bang {
+            compatible = "zmk,behavior-tap-dance";
+            label = "PERIOD_BANG";
+            #binding-cells = <0>;
+            bindings = <&kp PERIOD>, <&kp EXCLAMATION>;
+        };
+
+        comma_question: comma_question {
+            compatible = "zmk,behavior-tap-dance";
+            label = "COMMA_QUESTION";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp QUESTION>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -36,10 +89,10 @@
 
             display-name = "Base";
             bindings = <
-&kp EQUAL      &kp Q  &kp W  &kp F   &kp P       &kp B             &kp J          &kp L      &kp U      &kp Y    &kp SEMICOLON  &kp BACKSLASH
-&kp BACKSPACE  &kp A  &kp R  &kp S   &kp T       &kp G             &kp M          &kp N      &kp E      &kp I    &kp O          &kp SQT
-&kp TAB        &kp Z  &kp X  &kp C   &kp D       &kp V             &kp K          &kp H      &kp COMMA  &kp DOT  &kp FSLH       &kp LA(LG(LS(LEFT_CONTROL)))
-                             &trans  &kp RETURN  &kp LEFT_SHIFT    &kp BACKSPACE  &kp SPACE  &trans
+&HMR EQUAL LEFT_ALT    &kp Q  &kp W  &kp F   &kp P         &kp B             &kp J                          &kp L               &kp U            &kp Y         &kp SEMICOLON  &kp BACKSLASH
+&kp BACKSPACE          &kp A  &kp R  &kp S   &kp T         &kp G             &kp M                          &kp N               &kp E            &kp I         &kp O          &HMR SQT LEFT_SHIFT
+&HMR TAB LEFT_CONTROL  &kp Z  &kp X  &kp C   &kp D         &kp V             &kp K                          &kp H               &comma_question  &period_bang  &kp FSLH       &kp LA(LG(LS(LEFT_CONTROL)))
+                                     &trans  &lt 1 RETURN  &kp LEFT_SHIFT    &hmr_quick BACKSPACE LEFT_GUI  &lt 2 LEFT_COMMAND  &trans
             >;
         };
 
@@ -68,10 +121,10 @@
 
             display-name = "Sym+Num";
             bindings = <
-&kp AT_SIGN        &kp EXCLAMATION  &kp GRAVE    &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp AMPERSAND    &kp MINUS      &kp N7        &kp NUMBER_8  &kp NUMBER_9  &kp SLASH     &trans
-&kp TILDE          &kp ASTERISK     &kp DOLLAR   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp EQUAL        &kp PLUS       &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp ASTERISK  &kp BACKSPACE
-&kp LC(LG(SPACE))  &kp QUESTION     &kp PERCENT  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp ASTERISK     &kp PERIOD     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL     &kp RETURN
-                                                 &trans                &kp RETURN             &kp SPACE        &kp BACKSPACE  &kp SPACE     &kp NUMBER_0
+&kp AT_SIGN        &kp EXCLAMATION  &kp GRAVE    &kp LEFT_BRACE     &kp RIGHT_BRACE     &kp AMPERSAND    &kp MINUS      &kp N7        &kp NUMBER_8  &kp NUMBER_9  &kp KP_DIVIDE    &trans
+&kp TILDE          &kp ASTERISK     &kp DOLLAR   &left_paren_angle  &right_paren_angle  &kp EQUAL        &kp PLUS       &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp KP_MULTIPLY  &kp BACKSPACE
+&kp LC(LG(SPACE))  &kp QUESTION     &kp PERCENT  &kp LEFT_BRACKET   &kp RIGHT_BRACKET   &kp ASTERISK     &kp PERIOD     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp KP_EQUAL     &kp RETURN
+                                                 &trans             &kp RETURN          &kp SPACE        &kp BACKSPACE  &kp SPACE     &kp NUMBER_0
             >;
         };
 
