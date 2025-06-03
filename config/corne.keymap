@@ -89,10 +89,10 @@
 
             display-name = "Base";
             bindings = <
-&HMR EQUAL LEFT_ALT    &kp Q  &kp W  &kp F   &kp P         &kp B             &kp J                          &kp L               &kp U            &kp Y         &kp SEMICOLON  &kp BACKSLASH
-&kp BACKSPACE          &kp A  &kp R  &kp S   &kp T         &kp G             &kp M                          &kp N               &kp E            &kp I         &kp O          &HMR SQT LEFT_SHIFT
-&HMR TAB LEFT_CONTROL  &kp Z  &kp X  &kp C   &kp D         &kp V             &kp K                          &kp H               &comma_question  &period_bang  &kp FSLH       &kp LA(LG(LS(LEFT_CONTROL)))
-                                     &trans  &lt 1 RETURN  &kp LEFT_SHIFT    &hmr_quick BACKSPACE LEFT_GUI  &lt 2 LEFT_COMMAND  &trans
+&HMR LEFT_ALT EQUAL    &kp Q  &kp W  &kp F   &kp P         &kp B             &kp J                          &kp L        &kp U            &kp Y         &kp SEMICOLON  &kp BACKSLASH
+&kp BACKSPACE          &kp A  &kp R  &kp S   &kp T         &kp G             &kp M                          &kp N        &kp E            &kp I         &kp O          &HMR LEFT_SHIFT APOS
+&HMR LEFT_CONTROL TAB  &kp Z  &kp X  &kp C   &kp D         &kp V             &kp K                          &kp H        &comma_question  &period_bang  &kp FSLH       &kp LA(LG(LS(LEFT_CONTROL)))
+                                     &trans  &lt 1 RETURN  &kp LEFT_SHIFT    &hmr_quick LEFT_GUI BACKSPACE  &lt 2 SPACE  &trans
             >;
         };
 
