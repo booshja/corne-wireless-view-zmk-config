@@ -75,6 +75,16 @@
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp QUESTION>;
         };
+
+        layer1_enter: layer1_enter {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER1_ENTER";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+        };
     };
 
     keymap {
@@ -89,10 +99,10 @@
 
             display-name = "Base";
             bindings = <
-&mt LEFT_ALT EQUAL    &kp Q  &kp W  &kp F   &kp P         &kp B             &kp J                   &kp L        &kp U            &kp Y         &kp SEMICOLON  &kp BACKSLASH
-&kp BACKSPACE         &kp A  &kp R  &kp S   &kp T         &kp G             &kp M                   &kp N        &kp E            &kp I         &kp O          &HMR LEFT_SHIFT APOS
-&mt LEFT_CONTROL TAB  &kp Z  &kp X  &kp C   &kp D         &kp V             &kp K                   &kp H        &comma_question  &period_bang  &kp FSLH       &kp LA(LG(LS(LEFT_CONTROL)))
-                                    &trans  &lt 1 RETURN  &kp LEFT_SHIFT    &mt LEFT_GUI BACKSPACE  &lt 2 SPACE  &trans
+&mt LEFT_ALT EQUAL    &kp Q  &kp W  &kp F   &kp P                   &kp B             &kp J                   &kp L        &kp U            &kp Y         &kp SEMICOLON  &kp BACKSLASH
+&kp BACKSPACE         &kp A  &kp R  &kp S   &kp T                   &kp G             &kp M                   &kp N        &kp E            &kp I         &kp O          &HMR LEFT_SHIFT APOS
+&mt LEFT_CONTROL TAB  &kp Z  &kp X  &kp C   &kp D                   &kp V             &kp K                   &kp H        &comma_question  &period_bang  &kp FSLH       &kp LA(LG(LS(LEFT_CONTROL)))
+                                    &trans  &layer1_enter 1 RETURN  &kp LEFT_SHIFT    &mt LEFT_GUI BACKSPACE  &lt 2 SPACE  &trans
             >;
         };
 
