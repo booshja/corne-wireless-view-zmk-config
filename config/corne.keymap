@@ -25,25 +25,14 @@
     };
 
     behaviors {
-        HMR: HMR {
+        hold_tap_mod: hold_tap_mod {
             compatible = "zmk,behavior-hold-tap";
-            label = "HMR";
+            label = "HOLD_TAP_MOD";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
-            flavor = "tap-preferred";
-            hold-trigger-on-release;
-        };
-
-        hmr_quick: hmr_quick {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HMR_QUICK";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <175>;
             flavor = "tap-preferred";
             hold-trigger-on-release;
         };
@@ -75,16 +64,6 @@
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp QUESTION>;
         };
-
-        layer1_enter: layer1_enter {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYER1_ENTER";
-            bindings = <&mo>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-        };
     };
 
     keymap {
@@ -99,10 +78,10 @@
 
             display-name = "Base";
             bindings = <
-&mt LEFT_ALT EQUAL    &kp Q  &kp W  &kp F   &kp P                   &kp B             &kp J                   &kp L        &kp U            &kp Y         &kp SEMICOLON  &kp BACKSLASH
-&kp BACKSPACE         &kp A  &kp R  &kp S   &kp T                   &kp G             &kp M                   &kp N        &kp E            &kp I         &kp O          &HMR LEFT_SHIFT APOS
-&mt LEFT_CONTROL TAB  &kp Z  &kp X  &kp C   &kp D                   &kp V             &kp K                   &kp H        &comma_question  &period_bang  &kp FSLH       &kp LA(LG(LS(LEFT_CONTROL)))
-                                    &trans  &layer1_enter 1 RETURN  &kp LEFT_SHIFT    &mt LEFT_GUI BACKSPACE  &lt 2 SPACE  &trans
+&hold_tap_mod LEFT_ALT EQUAL    &kp Q  &kp W  &kp F  &kp P        &kp B             &kp J                             &kp L        &kp U            &kp Y         &kp SEMICOLON  &kp BACKSLASH
+&kp BACKSPACE                   &kp A  &kp R  &kp S  &kp T        &kp G             &kp M                             &kp N        &kp E            &kp I         &kp O          &hold_tap_mod LEFT_SHIFT APOS
+&hold_tap_mod LEFT_CONTROL TAB  &kp Z  &kp X  &kp C  &kp D        &kp V             &kp K                             &kp H        &comma_question  &period_bang  &kp FSLH       &kp LA(LG(LS(LEFT_CONTROL)))
+                                              &mo 1  &lt 1 ENTER  &kp LEFT_SHIFT    &hold_tap_mod LEFT_GUI BACKSPACE  &lt 2 SPACE  &mo 2
             >;
         };
 
