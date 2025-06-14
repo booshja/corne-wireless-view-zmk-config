@@ -33,8 +33,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
-            flavor = "tap-preferred";
-            hold-trigger-on-release;
+            flavor = "hold-preferred";
         };
 
         left_paren_angle: left_paren_angle {
@@ -66,6 +65,15 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        top-left-escape {
+            bindings = <&kp ESCAPE>;
+            key-positions = <0 1>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -78,10 +86,10 @@
 
             display-name = "Base";
             bindings = <
-&hold_tap_mod LEFT_ALT EQUAL    &kp Q  &kp W  &kp F  &kp P        &kp B             &kp J                             &kp L        &kp U            &kp Y         &kp SEMICOLON  &kp BACKSLASH
-&kp BACKSPACE                   &kp A  &kp R  &kp S  &kp T        &kp G             &kp M                             &kp N        &kp E            &kp I         &kp O          &hold_tap_mod LEFT_SHIFT APOS
-&hold_tap_mod LEFT_CONTROL TAB  &kp Z  &kp X  &kp C  &kp D        &kp V             &kp K                             &kp H        &comma_question  &period_bang  &kp FSLH       &kp LA(LG(LS(LEFT_CONTROL)))
-                                              &mo 1  &lt 1 ENTER  &kp LEFT_SHIFT    &hold_tap_mod LEFT_GUI BACKSPACE  &lt 2 SPACE  &mo 2
+&mt LEFT_ALT EQUAL    &kp Q  &kp W  &kp F  &kp P        &kp B             &kp J                   &kp L        &kp U            &kp Y         &kp SEMICOLON  &kp BACKSLASH
+&kp BACKSPACE         &kp A  &kp R  &kp S  &kp T        &kp G             &kp M                   &kp N        &kp E            &kp I         &kp O          &hold_tap_mod LEFT_SHIFT APOS
+&mt LEFT_CONTROL TAB  &kp Z  &kp X  &kp C  &kp D        &kp V             &kp K                   &kp H        &comma_question  &period_bang  &kp FSLH       &kp LA(LG(LS(LEFT_CONTROL)))
+                                    &mo 1  &lt 1 ENTER  &kp LEFT_SHIFT    &mt LEFT_GUI BACKSPACE  &lt 2 SPACE  &mo 2
             >;
         };
 
@@ -94,10 +102,10 @@
 
             display-name = "Arrow-Pr";
             bindings = <
-&kp LS(LA(LC(LG(K))))  &kp LS(LA(LC(LG(Q))))  &kp LS(LG(P))     &kp LA(LG(I))         &kp LG(S)     &kp LG(D)            &trans         &trans         &kp UP_ARROW  &trans         &trans           &trans
+&kp LS(LA(LC(LG(K))))  &kp LS(LA(LC(LG(Q))))  &kp LS(LG(P))     &kp LA(LG(I))         &kp LG(S)     &kp LG(D)            &none          &none          &kp UP_ARROW  &none          &none            &none
 &kp LG(V)              &kp LG(C)              &kp LG(X)         &kp LEFT_COMMAND      &kp LEFT_ALT  &kp LG(BACKSLASH)    &kp LG(LA(F))  &kp DOWN       &kp DOWN      &kp RIGHT      &go_left_editor  &go_editor_right
-&kp LA(LS(DOWN))       &kp LS(LA(UP_ARROW))   &kp LA(LG(DOWN))  &kp LA(LG(UP_ARROW))  &kp LA(DOWN)  &kp LA(UP_ARROW)     &kp LS(LG(E))  &kp LS(LC(G))  &trans        &kp LS(LG(F))  &kp LC(LG(I))    &kp LG(B)
-                                                                &trans                &trans        &kp SPACE            &kp BACKSPACE  &kp SPACE      &trans
+&kp LA(LS(DOWN))       &kp LS(LA(UP_ARROW))   &kp LA(LG(DOWN))  &kp LA(LG(UP_ARROW))  &kp LA(DOWN)  &kp LA(UP_ARROW)     &kp LS(LG(E))  &kp LS(LC(G))  &none         &kp LS(LG(F))  &kp LC(LG(I))    &kp LG(B)
+                                                                &none                 &none         &kp SPACE            &kp BACKSPACE  &kp SPACE      &none
             >;
         };
 
@@ -110,10 +118,10 @@
 
             display-name = "Sym+Num";
             bindings = <
-&kp AT_SIGN        &kp EXCLAMATION  &kp GRAVE    &kp LEFT_BRACE     &kp RIGHT_BRACE     &kp AMPERSAND    &kp MINUS      &kp N7        &kp NUMBER_8  &kp NUMBER_9  &kp KP_DIVIDE    &trans
+&kp AT_SIGN        &kp EXCLAMATION  &kp GRAVE    &kp LEFT_BRACE     &kp RIGHT_BRACE     &kp AMPERSAND    &kp MINUS      &kp N7        &kp NUMBER_8  &kp NUMBER_9  &kp KP_DIVIDE    &none
 &kp TILDE          &kp ASTERISK     &kp DOLLAR   &left_paren_angle  &right_paren_angle  &kp EQUAL        &kp PLUS       &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp KP_MULTIPLY  &kp BACKSPACE
 &kp LC(LG(SPACE))  &kp QUESTION     &kp PERCENT  &kp LEFT_BRACKET   &kp RIGHT_BRACKET   &kp ASTERISK     &kp PERIOD     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp KP_EQUAL     &kp RETURN
-                                                 &trans             &kp RETURN          &kp SPACE        &kp BACKSPACE  &kp SPACE     &kp NUMBER_0
+                                                 &none              &kp RETURN          &kp SPACE        &kp BACKSPACE  &none         &kp NUMBER_0
             >;
         };
 
@@ -126,10 +134,10 @@
 
             display-name = "Brd+Sys";
             bindings = <
-&trans  &trans  &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOL_UP          &trans                  &trans                  &trans             &trans  &trans  &trans  &trans
-&trans  &trans  &trans          &trans             &kp LG(LS(NUMBER_4))  &kp LS(LG(NUMBER_3))    &trans                  &kp K_SCROLL_UP    &trans  &trans  &trans  &trans
-&trans  &trans  &kp K_PREVIOUS  &kp K_PLAY_PAUSE   &kp K_NEXT            &kp K_STOP              &kp LC(LG(LEFT_ARROW))  &kp LC(LG(RIGHT))  &trans  &trans  &trans  &trans
-                                &trans             &kp RETURN            &kp LEFT_SHIFT          &kp BACKSPACE           &kp SPACE          &trans
+&none  &none  &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOL_UP          &none                   &none          &none      &none  &none  &none  &none
+&none  &none  &none           &none              &kp LG(LS(NUMBER_4))  &kp LS(LG(NUMBER_3))    &none          &none      &none  &none  &none  &none
+&none  &none  &kp K_PREVIOUS  &kp K_PLAY_PAUSE   &kp K_NEXT            &kp K_STOP              &none          &none      &none  &none  &none  &none
+                              &none              &kp RETURN            &kp LEFT_SHIFT          &kp BACKSPACE  &kp SPACE  &none
             >;
         };
     };
